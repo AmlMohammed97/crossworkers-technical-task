@@ -12,19 +12,22 @@ import Item from "./Item";
  *
  * and remove the ListProps interface
  */
-
+interface ResultItem {
+  id: string | number;
+  text: string;
+}
 interface ListProps {
-  searchResults: string[];
+  searchResults: ResultItem[];
   inputValue: string;
+  deleteListItem: (id: string | number) => void;
 }
 
-
-const List: FunctionComponent<ListProps> = ({ searchResults, inputValue }) => {
+const List: FunctionComponent<ListProps> = ({ searchResults, inputValue, deleteListItem }) => {
   return (
     <div className="search-results">
       {
         searchResults.length
-          ? searchResults.map((item) => <Item inputValue={inputValue} resultItem={item} />)
+          ? searchResults.map((item) => <Item key={item.id} inputValue={inputValue} resultItem={item} deleteListItem={() => deleteListItem(item.id)}/>)
           : <div className="no-results-message">No results found</div>
       }
     </div>

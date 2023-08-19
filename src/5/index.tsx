@@ -5,19 +5,49 @@ import "./index.scss";
 import Input from "./components/Input";
 import List from "./components/List";
 
-const fakeDataToSearchIn = ["Aml1", "Mohammed1", "Abdullah1", "Aml2", "Mohammed2", "Abdullah2", "Aml3", "Mohammed3", "Abdullah3", "Aml4", "Mohammed4", "Abdullah4"];
+const fakeDataToSearchIn :  ResultItem[] = [
+  {
+    id: 1,
+    text: "Aml"
+  },
+  {
+    id: 2,
+    text: "Mohammed"
+  },
+  {
+    id: 3,
+    text: "Abdullah"
+  },
+  {
+    id: 4,
+    text: "Mohammed"
+  },
+  {
+    id: 5,
+    text: "Ali"
+  },
+  {
+    id: 6,
+    text: "Gabr"
+  }
+];
 
+interface ResultItem {
+  id: string | number;
+  text: string;
+}
 interface Task5Props {
-  dataToSearchIn?: string[];
+  dataToSearchIn?: ResultItem[];
+  deleteListItem?: (id: string | number) => void;
 }
 
-const Task5: FunctionComponent<Task5Props> = ({ dataToSearchIn = fakeDataToSearchIn }) => {
+const Task5: FunctionComponent<Task5Props> = ({ dataToSearchIn = fakeDataToSearchIn, deleteListItem = () => {} }) => {
   const [inputValue, setInputValue] = useState("");
-  const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [searchResults, setSearchResults] = useState<ResultItem[]>([]);
 
   useEffect(() => {
     if (inputValue) {
-      setSearchResults(dataToSearchIn.filter((data) => data.toLowerCase().startsWith(inputValue.toLowerCase())));
+      setSearchResults(dataToSearchIn.filter((data: ResultItem) => data.text.toLowerCase().startsWith(inputValue.toLowerCase())));
     }
   }, [inputValue, dataToSearchIn]);
 
@@ -26,7 +56,7 @@ const Task5: FunctionComponent<Task5Props> = ({ dataToSearchIn = fakeDataToSearc
       <Input setInputValue={setInputValue} />
       <br />
       <div className={`search-results-container ${inputValue ? "visible" : "hidden"}`}>
-        <List searchResults={searchResults} inputValue={inputValue} />
+        <List deleteListItem={deleteListItem} searchResults={searchResults} inputValue={inputValue} />
       </div>
     </div>
   );

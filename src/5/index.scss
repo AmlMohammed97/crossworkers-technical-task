@@ -6,6 +6,7 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+    margin-top: 20px;
   }
 
   input {
@@ -17,6 +18,16 @@
     border-radius: 20px;
     font-family: muli-bold;
     background: 0 0;
+  }
+
+  .result-item {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .delete-button {
+    cursor: pointer;
   }
 
   input:hover,.result-item:hover {
@@ -42,7 +53,7 @@
     flex-direction: column;
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 10px 0px 10px 20px;
+    padding: 10px 0px;
   }
   .search-results-container {
     -webkit-transition-property: opacity;

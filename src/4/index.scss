@@ -1,5 +1,5 @@
 /* DO NOT CHANGE THIS ROOT CLASS NAME*/
-#task-5 { // should be #task-4
+#task-5, #task-6 { // should be #task-4
 
   /* Styles goes here */
   form {
@@ -35,15 +35,19 @@
     transition-timing-function: ease-out;
   }
 
-  button:hover::before {
+  button:hover::before, button:disabled::before {
     -webkit-transform: scaleY(0);
     transform: scaleY(0);
   }
 
+  button:disabled {
+    cursor: default;
+  }
+  
   button {
     border: none;
     color: white;
-    background-color: #f3566d;
+    background-color: #f08b9a;
     width: 152px;
     height: 40px;
     margin-top: 29px;

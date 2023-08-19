@@ -1,4 +1,31 @@
 /* DO NOT CHANGE THIS ROOT CLASS NAME*/
 #task-6 {
   /* Styles goes here */
+  .add-to-do,.to-do,.to-dos-container {
+    display: flex;
+  }
+  .pending-to-dos,.done-to-dos {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 5px;
+  }
+  .to-do {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: #F7F7F7;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    height: 65px;
+  }
+    .to-do:hover {
+      background-color: #E2E2E2;
+    }
+  
 }

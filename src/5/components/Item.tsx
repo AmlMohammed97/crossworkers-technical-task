@@ -11,13 +11,23 @@ import Highlighter from 'react-highlight-words';
  * and remove the ItemProps interface
  */
 
+interface ResultItem {
+  id: string | number;
+  text: string;
+}
 interface ItemProps {
-  resultItem: string;
-  inputValue: string
+  resultItem: ResultItem;
+  inputValue: string;
+  deleteListItem: () => void;
 }
 
-const Item: FunctionComponent<ItemProps> = ({ resultItem, inputValue }) => {
-  return <Highlighter className="result-item" highlightClassName="highlighted-text" searchWords={[inputValue]} textToHighlight={resultItem} />;
+const Item: FunctionComponent<ItemProps> = ({ resultItem, inputValue, deleteListItem }) => {
+  return (
+    <div className="result-item">
+      <Highlighter highlightClassName="highlighted-text" searchWords={[inputValue]} textToHighlight={resultItem.text} />
+      <span className="delete-button" onClick={deleteListItem}>x</span>
+    </div>
+  );
 };
 
 export default Item;
